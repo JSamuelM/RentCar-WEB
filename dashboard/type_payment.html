@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard | RENTCAR</title>
+    <link rel="stylesheet" href="../web/css/materialize.css">
+    <link rel="stylesheet" href="../web/css/material-icons.css">
+    <link rel="stylesheet" href="../web/css/all.css">
+    <link rel="stylesheet" href="../web/css/datatables.css">
+</head>
+<body class="sidena-active">
+    <ul id="slide-out" class="sidenav sidenav-fixed">
+        <li>
+            <div class="user-view">
+                <div class="background grey darken-6">
+                    <!-- <img src="images/office.jpg"> -->
+                </div>
+                <a href="#user"><img class="circle" src="../web/img/rent-a-car.svg"></a>
+                <a href="#name"><span class="white-text name">John Doe</span></a>
+                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            </div>
+        </li>
+        <li><a class="subheader">Renta</a></li>
+        <li><a href="renta.html"><i class="material-icons">assignment</i>Renta</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Catálogos</a></li>
+        <li><a href="user.html"><i class="material-icons">account_circle</i>Usuarios</a></li>
+        <li><a href="type_users.html"><i class="material-icons">supervisor_account</i>Tipo de Usuarios</a></li>
+        <li><a href="vehicles.html"><i class="material-icons">directions_car</i>Vehículos</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Datos de vehículos<i class="material-icons">arrow_drop_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="discount.html"><i class="material-icons">money_off</i>Descuentos</a></li>
+                            <li><a href="inventory.html"><i class="material-icons">list</i>Inventario</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Mantenimientos<i class="material-icons">arrow_drop_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="brand.html"><i class="material-icons">branding_watermark</i>Marca</a></li>
+                            <li><a href="model.html"><i class="material-icons">airport_shuttle</i>Modelo</a></li>
+                            <li><a href="transmission.html"><i class="material-icons">airline_seat_legroom_extra</i>Transmisión</a></li>
+                            <li><a href="gas.html"><i class="material-icons">local_gas_station</i>Combustible</a></li>
+                            <li><a href="license.html"><i class="material-icons">credit_card</i>Licencia</a></li>
+                            <li><a href="type_vehicle.html"><i class="material-icons">directions_car</i>Tipo de vehículo</a></li>
+                            <li><a href="type_payment.html"><i class="material-icons">payment</i>Tipo de pago</a></li>
+                            <li><a href="type_service.html"><i class="material-icons">room_service</i>Tipo de servicios</a></li>
+                            <li><a href="type_service.html"><i class="material-icons">room_service</i>Tipo de servicios</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><a href="logout.html"><i class="material-icons">power_settings_new</i>Cerrar Sesión</a></li>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="card card-shadow-none">
+                    <div class="card-content">
+                        <div class="row">
+                            <span class="card-title">Registro de Tipo de Pago</span>
+                        </div>
+                        <table id="tablePay" class="responsive hover no-wrap row-border striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tipo de pago</th>
+                                    <th>Estado</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agregar registro -->
+        <div class="fixed-action-btn">
+            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="modal">
+                <i class="large material-icons">add</i>
+            </button>
+        </div>
+    </main>
+
+    <div id="modal" class="modal">
+        <form action="">
+            <div class="modal-header blue darken-1">
+                <h4 class="mb-none">Registro de Tipo de Pago</h4>
+            </div>
+            <div class="modal-content">
+                <div class="row mb-none">
+                    <div class="col s12">
+                        <div class="row mb-none">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">payment</i>
+                                <input type="text" id="name" name="name">
+                                <label for="name">Nombre de tipo pago:</label>
+                            </div>
+                            <div class="center input-field col s12">
+                                <p>Estado del tipo de pago:</p>
+                                <div class="switch">
+                                    <label>
+                                        Inactivo
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                        Activo
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
+                <button type="button" class="modal-close waves-effect waves-green btn-flat">Agregar</button>
+            </div>
+        </form>
+    </div>
+    <script src="../web/js/jquery.min.js"></script>
+    <script src="../web/js/bin/materialize.min.js"></script>
+    <script src="../web/js/datatables.js"></script>
+    <script src="../web/js/initialize.js"></script>
+    <script src="../web/js/type_payment.js"></script>
+</body>
+</html>

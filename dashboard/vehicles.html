@@ -72,12 +72,18 @@
                         <div class="row">
                             <span class="card-title">Registro de Vehículos</span>
                         </div>
-                        <table id="tableUser" class="responsive hover no-wrap row-border striped">
+                        <table id="tableVehi" class="responsive hover no-wrap row-border striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>idmodel</th>
                                     <th>Modelo</th>
+                                    <th>idmarca</th>
+                                    <th>Marca</th>
+                                    <th>Año</th>
+                                    <th>idlice</th>
                                     <th>Licencia</th>
+                                    <th>idtipov</th>
                                     <th>Tipo vehículo</th>
                                     <th>Estado</th>
                                     <th>Opciones</th>
@@ -91,14 +97,14 @@
 
         <!-- Agregar registro -->
         <div class="fixed-action-btn">
-            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="modal">
+            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="add">
                 <i class="large material-icons">add</i>
             </button>
         </div>
     </main>
 
-    <div id="modal" class="modal">
-        <form action="">
+    <div id="add" class="modal">
+        <form action="" id="frmAdd">
             <div class="modal-header blue darken-1">
                 <h4 class="mb-none">Registro de Vehículo</h4>
             </div>
@@ -107,9 +113,10 @@
                     <div class="col s12">
                         <div class="row mb-none">
                             <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">airport_shuttle</i>
-                                <input type="text" id="model" name="model">
-                                <label for="model">Modelo del vehículo:</label>
+                                    <select name="mode" id="mode">
+                                       
+                                    </select>
+                                    <label>Modelo de vehiculo:</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">insert_invitation</i>
@@ -123,11 +130,8 @@
                     <div class="col s12">
                         <div class="row mb-none">
                             <div class="input-field col s12 m6">
-                                <select>
-                                    <option value="" disabled selected>Selecciona una opcíon</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                <select id="transm" name="transm">
+                                   
                                 </select>
                                 <label>Transmisión del vehículo:</label>
                             </div>
@@ -159,20 +163,14 @@
                     <div class="col s12">
                         <div class="row mb-none">
                             <div class="input-field col s12 m6">
-                                <select>
-                                    <option value="" disabled selected>Selecciona una opcíon</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                <select id="combu" name="combu">
+                                    
                                 </select>
                                 <label>Combustible del vehículo:</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <select>
-                                    <option value="" disabled selected>Selecciona una opcíon</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                <select id="lice" name="lice">
+                                   
                                 </select>
                                 <label>Licencia del vehículo:</label>
                             </div>
@@ -180,52 +178,162 @@
                     </div>
                 </div>
                 <div class="row mb-none">
-                    <div class="col s12">
+                    <div class="col s12 m6">
                         <div class="row mb-none">
                             <div class="input-field col s12">
-                                <select>
-                                    <option value="" disabled selected>Selecciona una opcíon</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                <select name="tipov" id="tipov">
+                                   
                                 </select>
                                 <label>Tipo de vehículo:</label>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">money_off</i>
+                        <input type="text" id="depo" name="depo">
+                        <label for="depo">Cantidad de deposito:</label>
+                    </div>         
                 </div>
-                <div class="row mb-none">
-                    <div class="col s12">
-                        <div class="row mb-none">
-                            <div class="center input-field col s12 m6">
-                                <p>Aire del vehículo A/C:</p>
-                                <div class="switch">
-                                    <label>
-                                      No
-                                      <input type="checkbox">
-                                      <span class="lever"></span>
-                                      Si
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="center input-field col s12 m6">
-                                    <p>Estado del vehículo:</p>
-                                    <div class="switch">
-                                        <label>
-                                          Inactivo
-                                          <input type="checkbox">
-                                          <span class="lever"></span>
-                                          Activo
-                                        </label>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
+                <div class="center input-field col s12 m6">
+                    <select id="aire" name="aire">
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>
+                    <label>Aire acondicionado:</label>
                 </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
-                <button type="button" class="modal-close waves-effect waves-green btn-flat">Agregar</button>
+                <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="add();">Agregar</button>
+            </div>
+        </form>
+    </div>
+    <div id="update" class="modal">
+            <form action="" id="frmUpdate">
+                <div class="modal-header blue darken-1">
+                    <h4 class="mb-none">Registro de Vehículo</h4>
+                </div>
+                <div class="modal-content">
+                    <div class="row mb-none">
+                        <div class="col s12">
+                            <div class="row mb-none">
+                                <div class="input-field col s12 m6">
+                                        <input type='hidden' id='updaCodi' name="updaCodi">
+                                        <select name="mode1" id="mode1">
+                                           
+                                        </select>
+                                        <label>Modelo de vehiculo:</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">insert_invitation</i>
+                                    <input type="text" id="anio1" name="anio1">
+                                    <label for="anio1">Año del vehículo:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-none">
+                        <div class="col s12">
+                            <div class="row mb-none">
+                                <div class="input-field col s12 m6">
+                                    <select id="transm1" name="transm1">
+                                       
+                                    </select>
+                                    <label>Transmisión del vehículo:</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">supervisor_account</i>
+                                    <input type="text" id="pasa1" name="pasa1">
+                                    <label for="pasa1">Pasajeros del vehículo:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-none">
+                        <div class="col s12">
+                            <div class="row mb-none">
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">airport_shuttle</i>
+                                    <input type="text" id="puertas1" name="puertas1">
+                                    <label for="puertas1">Puertas del vehículo:</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">surround_sound</i>
+                                    <input type="text" id="audio1" name="audio1">
+                                    <label for="audio1">Audio del vehículo:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-none">
+                        <div class="col s12">
+                            <div class="row mb-none">
+                                <div class="input-field col s12 m6">
+                                    <select id="combu1" name="combu1">
+                                        
+                                    </select>
+                                    <label>Combustible del vehículo:</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <select id="lice1" name="lice1">
+                                       
+                                    </select>
+                                    <label>Licencia del vehículo:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-none">
+                        <div class="col s12 m6">
+                            <div class="row mb-none">
+                                <div class="input-field col s12">
+                                    <select name="tipov1" id="tipov1">
+                                       
+                                    </select>
+                                    <label>Tipo de vehículo:</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">money_off</i>
+                            <input type="text" id="depo1" name="depo1">
+                            <label for="depo1">Cantidad de deposito:</label>
+                        </div>         
+                    </div>
+                    <div class="center input-field col s12 m6">
+                        <select id="aire1" name="aire1">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+                        <label>Aire acondicionado:</label>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
+                    <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="update();">Modificar</button>
+                </div>
+            </form>
+        </div>
+    <div id="remove" class="modal">
+        <form action="" id="frmDelete">
+            <div class="modal-header red darken-1 white-text">
+                <h5 class="mt-none mb-none">Eliminar Vehiculo</h5>
+                <i class="material-icons modal-close">close</i>
+            </div>
+            <div class="modal-content">
+                <div class="row">
+                    <input type='hidden' id='deleCodi' name="deleCodi">
+                    <p>¿Desea eliminar el siguiente registro?</p>
+                    <p><b>Nota: </b>Recordar una vez eliminado el registro y no se puede recuperar una vez realizada la operación</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                <button type="button" class="waves-effect waves-green btn red darken-1" onclick="remove();">Eliminar</button>
             </div>
         </form>
     </div>
@@ -233,6 +341,7 @@
     <script src="../web/js/bin/materialize.min.js"></script>
     <script src="../web/js/datatables.js"></script>
     <script src="../web/js/initialize.js"></script>
-    <script src="../web/js/users.js"></script>
+    <script src="../web/js/sweetalert2.js"></script>
+    <script src="../web/js/vehicles.js"></script>
 </body>
 </html>

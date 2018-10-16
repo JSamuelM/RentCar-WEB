@@ -89,51 +89,88 @@
 
         <!-- Agregar registro -->
         <div class="fixed-action-btn">
-            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="modal">
+            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="add">
                 <i class="large material-icons">add</i>
             </button>
         </div>
     </main>
 
-    <div id="modal" class="modal">
-        <form action="">
-            <div class="modal-header blue darken-1">
-                <h4 class="mb-none">Registro de Licencia</h4>
-            </div>
-            <div class="modal-content">
-                <div class="row mb-none">
-                    <div class="col s12">
-                        <div class="row mb-none">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">payment</i>
-                                <input type="text" id="name" name="name">
-                                <label for="name">Nombre de Licencia:</label>
-                            </div>
-                            <div class="center input-field col s12">
-                                <p>Estado de la Licencia:</p>
-                                <div class="switch">
-                                    <label>
-                                        Inactivo
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        Activo
-                                    </label>
+    <div id="add" class="modal">
+            <form action="" id="frmAdd">
+                <div class="modal-header blue darken-1">
+                    <h4 class="mb-none">Registro de Tipo de Licencia</h4>
+                </div>
+                <div class="modal-content">
+                    <div class="row mb-none">
+                        <div class="col s12">
+                            <div class="row mb-none">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">payment</i>
+                                    <input type="text" id="nameadd" name="nameadd">
+                                    <label for="nameadd">Tipo de licencia:</label>
                                 </div>
+                               
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
-                <button type="button" class="modal-close waves-effect waves-green btn-flat">Agregar</button>
-            </div>
-        </form>
-    </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
+                    <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="add();">Agregar</button>
+                </div>
+            </form>
+        </div>
+        <div id="update" class="modal">
+            <form action="" id="frmUpdate">
+                <div class="modal-header blue darken-1">
+                    <h4 class="mb-none">Registro de Tipo de Licencia</h4>
+                </div>
+                <div class="modal-content">
+                    <div class="row mb-none">
+                        <div class="col s12">
+                            <div class="row mb-none">
+                                <div class="input-field col s12">
+                                    <input type='hidden' id='updaCodi' name="updaCodi">
+                                    <i class="material-icons prefix">payment</i>
+                                    <input type="text" id="nameupd" name="nameupd">
+                                    <label for="nameupd">Tipo de Licencia:</label>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
+                    <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="update();">Modificar</button>
+                </div>
+            </form>
+        </div>
+        <div id="remove" class="modal">
+            <form action="" id="frmDelete">
+                <div class="modal-header red darken-1 white-text">
+                    <h5 class="mt-none mb-none">Eliminar Tipo de Licencia</h5>
+                    <i class="material-icons modal-close">close</i>
+                </div>
+                <div class="modal-content">
+                    <div class="row">
+                        <input type='hidden' id='deleCodi'>
+                        <input type='hidden' id='nameupd'>
+                        <p>¿Desea eliminar el siguiente registro?</p>
+                        <p><b>Nota: </b>Recordar una vez eliminado el registro y no se puede recuperar una vez realizada la operación</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                    <button type="button" class="waves-effect waves-green btn red darken-1" onclick="remove();">Eliminar</button>
+                </div>
+            </form>
+        </div>
     <script src="../web/js/jquery.min.js"></script>
     <script src="../web/js/bin/materialize.min.js"></script>
     <script src="../web/js/datatables.js"></script>
     <script src="../web/js/initialize.js"></script>
+    <script src="../web/js/sweetalert2.js"></script>
     <script src="../web/js/license.js"></script>
 </body>
 </html>

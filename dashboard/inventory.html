@@ -76,7 +76,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Vehículo</th>
+                                    <th>ID vehiculo</th>
+                                    <th>Modelo</th>
+                                    <th>Marca</th>
+                                    <th>Año</th>
                                     <th>Cantidad</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -89,14 +92,14 @@
 
         <!-- Agregar registro -->
         <div class="fixed-action-btn">
-            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="modal">
+            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="add">
                 <i class="large material-icons">add</i>
             </button>
         </div>
     </main>
 
-    <div id="modal" class="modal">
-        <form action="">
+    <div id="add" class="modal">
+        <form action="" id="frmAdd">
             <div class="modal-header blue darken-1">
                 <h4 class="mb-none">Registro de Inventario</h4>
             </div>
@@ -105,11 +108,8 @@
                     <div class="col s12">
                         <div class="row mb-none">
                             <div class="input-field col s12 m6">
-                                <select>
-                                    <option value="" disabled selected>Seleccione el vehículo</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                <select id="vehi" name="vehi">
+                                    
                                 </select>
                                 <label>Vehículo</label>
                             </div>
@@ -124,14 +124,46 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
-                <button type="button" class="modal-close waves-effect waves-green btn-flat">Agregar</button>
+                <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="add();">Agregar</button>
             </div>
         </form>
     </div>
+    <div id="update" class="modal">
+            <form action="" id="frmUpdate">
+                <div class="modal-header blue darken-1">
+                    <h4 class="mb-none">Registro de Inventario</h4>
+                </div>
+                <div class="modal-content height-sm">
+                    <div class="row mb-none">
+                        <div class="col s12">
+                            <div class="row mb-none">
+                                    <input type='hidden' id='updaCodi' name="updaCodi">
+                                <div class="input-field col s12 m6">
+                                    <select id="vehiupd" name="vehiupd">
+                                        
+                                    </select>
+                                    <label>Vehículo</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">list_alt</i>
+                                    <input type="text" id="cantiupd" name="cantiupd">
+                                    <label for="cantiupd">Cantidad:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
+                    <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="update();">Modificar</button>
+                </div>
+            </form>
+        </div>
     <script src="../web/js/jquery.min.js"></script>
     <script src="../web/js/bin/materialize.min.js"></script>
     <script src="../web/js/datatables.js"></script>
     <script src="../web/js/initialize.js"></script>
+    <script src="../web/js/sweetalert2.js"></script>
     <script src="../web/js/inventory.js"></script>
 </body>
 </html>

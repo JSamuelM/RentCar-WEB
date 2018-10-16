@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../web/css/material-icons.css">
     <link rel="stylesheet" href="../web/css/all.css">
     <link rel="stylesheet" href="../web/css/datatables.css">
+
 </head>
 <body class="sidena-active">
     <ul id="slide-out" class="sidenav sidenav-fixed">
@@ -77,6 +78,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Modelo</th>
+                                    <th>ID Marca</th>
+                                    <th>Marca</th>
                                     <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
@@ -89,14 +92,14 @@
 
         <!-- Agregar registro -->
         <div class="fixed-action-btn">
-            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="modal">
+            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="add">
                 <i class="large material-icons">add</i>
             </button>
         </div>
     </main>
 
-    <div id="modal" class="modal">
-        <form action="">
+    <div id="add" class="modal">
+        <form action="" id="frmAdd">
             <div class="modal-header blue darken-1">
                 <h4 class="mb-none">Registro de Modelo</h4>
             </div>
@@ -106,42 +109,82 @@
                         <div class="row mb-none">
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">airport_shuttle</i>
-                                <input type="text" id="name" name="name">
-                                <label for="name">Nombre de modelo:</label>
+                                <input type="text" id="nameadd" name="nameadd">
+                                <label for="nameadd">Nombre de modelo:</label>
                             </div>
                             <div class="input-field col s12 m6">
-                                <select>
-                                    <option value="" disabled selected>Seleccione una marca:</option>
-                                    <option value="1">Option 1</option>
-                                    <option value="2">Option 2</option>
-                                    <option value="3">Option 3</option>
+                                
+                                <select name="marca" id="marca" >
                                 </select>
-                                <label>Marca del modelo</label>
+                                <label>
+                                    Marca
+                                    
+                                  </label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row mb-none">
-                    <div class="col s12">
-                        <div class="row mb-none">
-                            <div class="center input-field col s12">
-                                <p>Estado de la marca:</p>
-                                <div class="switch">
-                                    <label>
-                                        Inactivo
-                                        <input type="checkbox">
-                                        <span class="lever"></span>
-                                        Activo
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
             <div class="modal-footer">
                 <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
-                <button type="button" class="modal-close waves-effect waves-green btn-flat">Agregar</button>
+                <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="add();">Agregar</button>
+            </div>
+        </form>
+    </div>
+    <div id="update" class="modal">
+        <form action="" id="frmUpdate">
+            <div class="modal-header blue darken-1">
+                <h4 class="mb-none">Registro de Modelo</h4>
+            </div>
+            <div class="modal-content">
+                <div class="row mb-none">
+                    <div class="col s12">
+                        <div class="row mb-none">
+                            <input type='hidden' id='updaCodi' name="updaCodi">
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">airport_shuttle</i>
+                                <input type="text" id="nameupd" name="nameupd">
+                                <label for="nameupd">Nombre de modelo:</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                
+                                <select name="marcaupd" id="marcaupd" >
+                                </select>
+                                <label>
+                                    Marca
+                                    
+                                  </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modal-close waves-effect waves-red btn-flat">Cancelar</button>
+                <button type="button" class="modal-close waves-effect waves-green btn-flat" onclick="update();">Actualizar</button>
+            </div>
+        </form>
+    </div>
+    <div id="remove" class="modal">
+        <form action="" id="frmDelete">
+            <div class="modal-header red darken-1 white-text">
+                <h5 class="mt-none mb-none">Eliminar Modelo</h5>
+                <i class="material-icons modal-close">close</i>
+            </div>
+            <div class="modal-content">
+                <div class="row">
+                    <input type='hidden' id='deleCodi'>
+                    <input type='hidden' id='nameupd'>
+                    <input type='hidden' id='marcadel'>
+                    <p>¿Desea eliminar el siguiente registro?</p>
+                    <p><b>Nota: </b>Recordar una vez eliminado el registro y no se puede recuperar una vez realizada la operación</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                <button type="button" class="waves-effect waves-green btn red darken-1" onclick="remove();">Eliminar</button>
             </div>
         </form>
     </div>
@@ -149,6 +192,8 @@
     <script src="../web/js/bin/materialize.min.js"></script>
     <script src="../web/js/datatables.js"></script>
     <script src="../web/js/initialize.js"></script>
+    <script src="../web/js/sweetalert2.js"></script>
     <script src="../web/js/model.js"></script>
+    
 </body>
 </html>

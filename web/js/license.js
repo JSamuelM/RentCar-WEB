@@ -7,6 +7,24 @@ $(document).ready(function () {
 function dataTable() {
     table = $('#tableLicense').DataTable({
         destroy: true,
+        ajax: {
+            method: 'GET',
+            url: 'http://localhost:8081/jerseyrent/webapi/Licencia',
+            data: {},
+            dataSrc: 'licencia'
+        },
+        columns: [{
+            data: 'codiLice',
+            "visible": false
+            
+        }, {
+            data: 'nombLice'
+        },{
+            data: 'estaLice',
+            "visible": false
+        }, {
+            defaultContent: "<a href='#update' class='update btn-small blue darken-1 waves-effect waves-ligth modal-trigger'>Modificar</a> <a href='#remove' class='delete btn-small red darken-1 waves-effect waves-ligth modal-trigger'>Eliminar</a>"
+        }],
         language: {
             "sProcessing": "Procesando...",
             "sLengthMenu": "Mostrar _MENU_ registros",
@@ -34,4 +52,168 @@ function dataTable() {
         iDisplayLength: 5
     });
     $('select').formSelect();
+     // Llamamos al metodo para obtener los datos, para actualizar
+     getDataToUpdate("#tableLicense tbody", table);
+     // Llamamos al metodo para obtener el id del registro, para eliminar
+     getIdToDelete("#tableLicense tbody", table);
+}
+// Funcion para obtener datos
+function getDataToUpdate(tbody, table) {
+    $('tbody').on("click", "a.update", function() {
+        var data = table.row($(this).parents("tr")).data();
+        $("#nameupd").next("label").addClass("active");
+        $("#updaCodi").val(data.codiLice),
+        $("#nameupd").val(data.nombLice);
+        
+    });
+}
+// Funcion para obtener el ID
+function getIdToDelete(tbody, table) {
+    $('tbody').on("click", "a.delete", function() {
+        var data = table.row($(this).parents("tr")).data();
+        $("#namedel").next("label").addClass("active");
+        var codiTipoVehi = $("#deleCodi").val(data.codiLice);
+        $("#nameupd").val(data.nombLice);
+    });
+}
+function add(){
+    
+    var nomb=$('#nameadd').val();
+
+    $.ajax({
+        url : 'http://localhost:8081/jerseyrent/webapi/Licencia/create',
+        headers: { 
+            
+            'Content-Type': 'application/json' 
+        },
+        type : 'POST',
+        data : JSON.stringify({
+            codiLice:null,
+            nombLice:nomb,
+            estaLice:1,
+            
+        }),
+        dataType:'JSON',
+        success : function(resp) {
+            console.log(resp);
+            // Recargando la tabla
+            table.ajax.reload();
+            // Reset
+            swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Tipo de licencia agregada exitosamente',
+                showConfirmButton: false,
+                timer: 1300
+              })
+            $('.modal-footer').show();
+            $('#add').modal('close');
+            $('#frmAdd')[0].reset();
+        },
+        error : function() {
+            console.log("No se pudo contactar con el servidor");
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1300
+              })
+        }
+    });
+  
+}
+function update(){
+    var codi=$('#updaCodi').val();
+    var nomb=$('#nameupd').val();
+
+    $.ajax({
+        url : 'http://localhost:8081/jerseyrent/webapi/Licencia/update',
+        headers: { 
+            
+            'Content-Type': 'application/json' 
+        },
+        type : 'PUT',
+        data : JSON.stringify({
+            codiLice:codi,
+            nombLice:nomb,
+            estaLice:1,
+            
+        }),
+        dataType:'JSON',
+        success : function(resp) {
+            console.log(resp);
+            // Recargando la tabla
+            table.ajax.reload();
+            // Reset
+            swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Tipo de licencia modificada exitosamente',
+                showConfirmButton: false,
+                timer: 1300
+              })
+            $('.modal-footer').show();
+            $('#update').modal('close');
+            $('#frmUpdate')[0].reset();
+        },
+        error : function() {
+            console.log("No se pudo contactar con el servidor");
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1300
+              })
+        }
+    });
+  
+}
+function remove(){
+    var codi=$('#deleCodi').val();
+    var nomb=$('#nameupd').val();
+    $.ajax({
+        url : 'http://localhost:8081/jerseyrent/webapi/Licencia/delete',
+        headers: { 
+            
+            'Content-Type': 'application/json' 
+        },
+        type : 'PUT',
+        data : JSON.stringify({
+            codiLice:codi,
+            nombLice:nomb,
+            estaLice:0,
+            
+        }),
+        dataType:'JSON',
+        success : function(resp) {
+            console.log(resp);
+            // Recargando la tabla
+            table.ajax.reload();
+            // Reset
+            swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Tipo de licencia eliminada exitosamente',
+                showConfirmButton: false,
+                timer: 1300
+              })
+            
+            $('#remove').modal('close');
+            
+        },
+        error : function() {
+            
+            console.log("No se pudo contactar con el servidor");
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1300
+              })
+        }
+    });
+  
 }

@@ -192,7 +192,7 @@ function remove(){
             codiTipoServ:codi,
             nombServ:nomb,
             precServ:prec,
-            estaMarc:0,
+            estaServ:0,
             
         }),
         dataType:'JSON',

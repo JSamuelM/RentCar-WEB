@@ -144,7 +144,7 @@ function update(){
             codiTipoServ:codi,
             nombServ:nomb,
             precServ:prec,
-            estaMarc:1,
+            estaServ:1,
             
         }),
         dataType:'JSON',

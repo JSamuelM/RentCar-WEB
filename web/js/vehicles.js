@@ -9,7 +9,7 @@ $(document).ready(function () {
     obteLice();
 });
 function obteMode() {
-    $.getJSON('http://localhost:8081/jerseyrent/webapi/Modelo', function(data) {
+    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Modelo', function(data) {
         var vehiculos = data.modelo;
         $('#mode li').remove();
         $('#mode1 li').remove();
@@ -22,7 +22,7 @@ function obteMode() {
     
 }
 function obteCombu() {
-    $.getJSON('http://localhost:8081/jerseyrent/webapi/Combustible', function(data) {
+    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Combustible', function(data) {
         var vehiculos = data.combustible;
         $('#combu li').remove();
         $('#combu1 li').remove();
@@ -35,7 +35,7 @@ function obteCombu() {
     
 }
 function obteTipoV() {
-    $.getJSON('http://localhost:8081/jerseyrent/webapi/TipoVehiculo', function(data) {
+    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoVehiculo', function(data) {
         var vehiculos = data.tipoVehiculo;
         $('#tipov li').remove();
         $('#tipov1 li').remove();
@@ -48,7 +48,7 @@ function obteTipoV() {
     
 }
 function obteTrans() {
-    $.getJSON('http://localhost:8081/jerseyrent/webapi/Transmision', function(data) {
+    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Transmision', function(data) {
         var vehiculos = data.transmision;
         $('#transm li').remove();
         $('#transm1 li').remove();
@@ -61,7 +61,7 @@ function obteTrans() {
     
 }
 function obteLice() {
-    $.getJSON('http://localhost:8081/jerseyrent/webapi/Licencia', function(data) {
+    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Licencia', function(data) {
         var vehiculos = data.licencia;
         $('#lice li').remove();
         $('#lice1 li').remove();
@@ -78,7 +78,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://localhost:8081/jerseyrent/webapi/Vehiculo',
+            url: 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo',
             data: {},
             dataSrc: 'vehiculo'
         },
@@ -115,7 +115,7 @@ function dataTable() {
             data: 'estaVehi',
             "visible":false
         },{
-            defaultContent: "<a href='#update' class='update btn-small blue darken-1 waves-effect waves-ligth modal-trigger'>Modificar</a> <a href='#remove' class='delete btn-small red darken-1 waves-effect waves-ligth modal-trigger'>Eliminar</a>"
+            defaultContent: "<a href='#update' class='update btn-small blue darken-1 waves-effect waves-ligth modal-trigger'>Modificar</a> <a href='#remove' class='delete btn-small red darken-1 waves-effect waves-ligth modal-trigger'>Eliminar</a> <a href='#im' class='delete btn-small green darken-1 waves-effect waves-ligth modal-trigger' >Subir imagen</a>"
         }],
         language: {
             "sProcessing": "Procesando...",
@@ -148,13 +148,15 @@ function dataTable() {
      getDataToUpdate("#tableVehi tbody", table);
      // Llamamos al metodo para obtener el id del registro, para eliminar
      getIdToDelete("#tableVehi tbody", table);
+     idima("#tableVehi tbody", table)
+    
 }
 // Funcion para obtener datos
 function getDataToUpdate(tbody, table) {
     $('tbody').on("click", "a.update", function() {
         var data = table.row($(this).parents("tr")).data();
         $("#updaCodi").val(data.codiVehi);
-        console.log(data);
+
         
     });
 }
@@ -163,8 +165,15 @@ function getIdToDelete(tbody, table) {
     $('tbody').on("click", "a.delete", function() {
         var data = table.row($(this).parents("tr")).data();
        $("#deleCodi").val(data.codiVehi);
-       console.log(data);
+
         
+    });
+}
+function idima(tbody, table) {
+    $('tbody').on("click", "a.delete", function() {
+        var data = table.row($(this).parents("tr")).data();
+       $("#imageCodi").val(data.codiVehi);
+
     });
 }
 function add(){
@@ -181,7 +190,7 @@ function add(){
     var depo=$('#depo').val();
     var tipov=$('#tipov').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Vehiculo/create',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -261,7 +270,7 @@ function update(){
         estaVehi:1
     });
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Vehiculo/update',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -316,7 +325,7 @@ function remove(){
     var codi=$('#deleCodi').val();
     
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Vehiculo/delete',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/delete',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -356,4 +365,79 @@ function remove(){
         }
     });
   
+}
+function imag(){
+    var file = $('input[name="file"').get(0).files[0];
+    var formData = new FormData();
+    var respuesta="";
+    formData.append('file', file);
+    $.ajax({
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/imagenes/upload',
+        type : 'POST',
+        data : formData,
+        cache : false,
+        contentType : false,
+        processData : false,
+        success : function(resp) {            
+            respuesta=resp;
+            imagebase(respuesta);
+        },
+        error : function(resp) {
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: resp,
+                showConfirmButton: false,
+                timer: 1300
+              })
+        }
+    });
+}
+function imagebase(resp){
+    
+    var codi=$('#imageCodi').val();
+
+    $.ajax({
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/imagenes/create',
+        headers: { 
+            
+            'Content-Type': 'application/json' 
+        },
+        type : 'POST',
+        data : JSON.stringify({
+            codiImag:null,
+            vehiculo:{codiVehi:codi},
+            fotoVehi:resp,
+            estaImag:1
+            
+        }),
+        dataType:'JSON',
+        success : function() {
+            console.log("No se pudo contactar con el servidor");
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1300
+              })
+            $('.modal-footer').show();
+            $('#im').modal('close');
+            $('#frmImg')[0].reset();
+        },
+        error : function() {
+            
+            
+              swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Imagen subida correctamente',
+                showConfirmButton: false,
+                timer: 1300
+              })
+              $('.modal-footer').show();
+              $('#im').modal('close');
+              $('#frmImg')[0].reset();
+        }
+    });
 }

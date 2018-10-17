@@ -9,7 +9,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://localhost:8081/jerseyrent/webapi/TipoPago',
+            url: 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoPago',
             data: {},
             dataSrc: 'tipoPago'
         },
@@ -81,7 +81,7 @@ function add(){
     var nomb=$('#nameadd').val();
 
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/TipoPago/create',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoPago/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -128,7 +128,7 @@ function update(){
     var nomb=$('#nameupd').val();
 
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/TipoPago/update',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoPago/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -174,7 +174,7 @@ function remove(){
     var codi=$('#deleCodi').val();
     var nomb=$('#nameupd').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/TipoPago/delete',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoPago/delete',
         headers: { 
             
             'Content-Type': 'application/json' 

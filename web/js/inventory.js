@@ -5,7 +5,7 @@ $(document).ready(function () {
     obteVehi();
 });
 function obteVehi() {
-    $.getJSON('http://localhost:8081/jerseyrent/webapi/Vehiculo', function(data) {
+    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo', function(data) {
         var vehiculos = data.vehiculo;
         $('#vehiupd li').remove();
         $('#vehi li').remove();
@@ -22,7 +22,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://localhost:8081/jerseyrent/webapi/InventarioVehiculo',
+            url: 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo',
             data: {},
             dataSrc: 'inventarioVehiculo'
         },
@@ -93,7 +93,7 @@ function add(){
     var cant=$('#canti').val();
     var marc=$('#vehi').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/InventarioVehiculo/create',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -140,7 +140,7 @@ function update(){
     var cant=$('#cantiupd').val();
     var marc=$('#vehiupdupd').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Inventario/update',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Inventario/update',
         headers: { 
             
             'Content-Type': 'application/json' 

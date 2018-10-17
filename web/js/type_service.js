@@ -9,7 +9,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://localhost:8081/jerseyrent/webapi/TipoServicio',
+            url: 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoServicio',
             data: {},
             dataSrc: 'tipoServicio'
         },
@@ -86,7 +86,7 @@ function add(){
     var nomb=$('#nameadd').val();
     var prec=$('#price1').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/TipoServicio/create',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoServicio/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -134,7 +134,7 @@ function update(){
     var nomb=$('#nameupd').val();
     var prec=$('#price2').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/TipoServicio/update',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoServicio/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -182,7 +182,7 @@ function remove(){
     var nomb=$('#nameupd').val();
     var prec=$('#price3').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/TipoServicio/delete',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoServicio/delete',
         headers: { 
             
             'Content-Type': 'application/json' 

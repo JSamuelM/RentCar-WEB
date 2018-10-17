@@ -337,6 +337,29 @@
             </div>
         </form>
     </div>
+    <div id="im" class="modal">
+        <form action="" id="frmImg">
+            <div class="modal-header blue darken-1">
+                <h5 class="mt-none mb-none">Añadir imagen</h5>
+                
+            </div>
+            <div class="modal-content">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <p>Seleccione la imagen a subir:</p>
+                        <input type='hidden' id='imageCodi' name="imageCodi">
+                        <input type="file" name="file" accept=".png" />
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                <button type="button" class="waves-effect waves-green btn blue darken-1" onclick="imag();">Subir</button>
+            </div>
+            
+        </form>
+    </div>
     <script src="../web/js/jquery.min.js"></script>
     <script src="../web/js/bin/materialize.min.js"></script>
     <script src="../web/js/datatables.js"></script>

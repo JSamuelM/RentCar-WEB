@@ -6,7 +6,7 @@ $(document).ready(function () {
     
 });
 function obteMarca() {
-    $.getJSON('http://localhost:8081/jerseyrent/webapi/Marca', function(data) {
+    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Marca', function(data) {
         var marcas = data.marca;
         $('#marca li').remove();
         $('#marcaupd li').remove();
@@ -24,7 +24,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://localhost:8081/jerseyrent/webapi/Modelo',
+            url: 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Modelo',
             data: {},
             dataSrc: 'modelo'
         },
@@ -103,7 +103,7 @@ function add(){
     var nomb=$('#nameadd').val();
     var marc=$('#marca').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Modelo/create',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Modelo/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -151,7 +151,7 @@ function update(){
     var nomb=$('#nameupd').val();
     var marc=$('#marcaupd').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Modelo/update',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Modelo/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -199,7 +199,7 @@ function remove(){
     var nomb=$('#nameupd').val();
     var marc=$('#marcadel').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Modelo/delete',
+        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Modelo/delete',
         headers: { 
             
             'Content-Type': 'application/json' 

@@ -96,7 +96,7 @@ function add(){
             codiTipoServ:null,
             nombServ:nomb,
             precServ:prec,
-            estaMarc:1,
+            estaTipoServ:1,
             
         }),
         dataType:'JSON',
@@ -144,7 +144,7 @@ function update(){
             codiTipoServ:codi,
             nombServ:nomb,
             precServ:prec,
-            estaServ:1,
+            estaTipoServ:1,
             
         }),
         dataType:'JSON',
@@ -192,7 +192,7 @@ function remove(){
             codiTipoServ:codi,
             nombServ:nomb,
             precServ:prec,
-            estaServ:0,
+            estaTipoServ:0,
             
         }),
         dataType:'JSON',

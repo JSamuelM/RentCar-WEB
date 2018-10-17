@@ -156,15 +156,30 @@ function getDataToUpdate(tbody, table) {
     $('tbody').on("click", "a.update", function() {
         var data = table.row($(this).parents("tr")).data();
         $("#updaCodi").val(data.codiVehi);
-
+        $('#combu1').val(data.combustible.codiComb);
+        $('#mode1').val(data.modelo.codiMode);
+        $("#pasa1").next("label").addClass("active");
+        $('#pasa1').val(data.pasaVehi);
+        $("#puertas1").next("label").addClass("active");
+        $('#puertas1').val(data.puerVehi);
+        $("#anio1").next("label").addClass("active");
+        $('#anio1').val(data.anioVehi);
+        $('#transm1').val(data.transmision.codiTran);
+        $("#audio1").next("label").addClass("active");
+        $('#audio1').val(data.audiVehi);
+        $('#lice1').val(data.licencia.codiLice);
+        $('#aire1').val(data.aireVehi);
+        $("#depo1").next("label").addClass("active");
+        $('#depo1').val(data.depoVehi); 
+        $('#tipov1').val(data.tipoVehiculo.codiTipoVehi);
         
     });
 }
 // Funcion para obtener el ID
 function getIdToDelete(tbody, table) {
     $('tbody').on("click", "a.delete", function() {
-        var data = table.row($(this).parents("tr")).data();
-       $("#deleCodi").val(data.codiVehi);
+    var data = table.row($(this).parents("tr")).data();
+    $("#deleCodi").val(data.codiVehi);
 
         
     });

@@ -43,6 +43,9 @@ function dataTable() {
         }, {
             data: 'duiUsua',
             "visible": true
+        }, {
+            data: 'nitUsua',
+            "visible": false
         },{
             data: 'corrUsua'
         }, {
@@ -102,7 +105,7 @@ function getDataToUpdate(tbody, table) {
         $('#direc1').val(data.direUsua);
         $('#phone1').val(data.teleUsua);
         $('#dui1').val(data.duiUsua);
-        $('#nit1').val(data.nit);
+        $('#nit1').val(data.nitUsua);
         $('#pasa1').val(data.pasaUsua);
         $('#email1').val(data.corrUsua);
         $('#tipoupd1').val(data.tipoUsuario.tipoUsua);

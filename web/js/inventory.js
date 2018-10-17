@@ -22,18 +22,21 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://localhost:8081/jerseyrent/webapi/Vehiculo',
+            url: 'http://localhost:8081/jerseyrent/webapi/InventarioVehiculo',
             data: {},
             dataSrc: 'inventarioVehiculo'
         },
         columns: [ {
-            data: 'codiVehi',
+            data: 'codiInve',
+            "visible": false
+        },{
+            data: 'vehiculo.codiVehi',
             "visible": false
         }, {
-            data: 'modelo.nombMode',
+            data: 'vehiculo.modelo.nombMode',
             "visible": true
         }, {
-            data: 'modelo.marca.nombMarc',
+            data: 'vehiculo.modelo.marca.nombMarc',
             "visible": true
         }, {
             data: 'vehiculo.anioVehi',
@@ -135,9 +138,9 @@ function add(){
 function update(){
     var codi=$('#updaCodi').val();
     var cant=$('#cantiupd').val();
-    var marc=$('#marcaupd').val();
+    var marc=$('#vehiupdupd').val();
     $.ajax({
-        url : 'http://localhost:8081/jerseyrent/webapi/Modelo/update',
+        url : 'http://localhost:8081/jerseyrent/webapi/Inventario/update',
         headers: { 
             
             'Content-Type': 'application/json' 

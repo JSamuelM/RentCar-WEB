@@ -5,7 +5,7 @@ $(document).ready(function () {
     obteVehi();
 });
 function obteVehi() {
-    $.getJSON('http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo', function(data) {
+    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo', function(data) {
         var vehiculos = data.vehiculo;
         $('#vehiupd li').remove();
         $('#vehi li').remove();
@@ -22,7 +22,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo',
+            url: 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo',
             data: {},
             dataSrc: 'inventarioVehiculo'
         },
@@ -42,9 +42,11 @@ function dataTable() {
             data: 'vehiculo.anioVehi',
             "visible": true
         },{
-            data: 'cantVehi'
+            data: 'matrVehi'
         }, {
-            defaultContent: "<a href='#update' class='update btn-small blue darken-1 waves-effect waves-ligth modal-trigger'>Modificar</a> "
+            data: 'circVehi'
+        },{
+            defaultContent: "<a href='#update' class='update btn-small blue darken-1 waves-effect waves-ligth modal-trigger'>Actualizar</a> <a href='#remove' class='delete btn-small red darken-1 waves-effect waves-ligth modal-trigger'>Eliminar</a>"
         }],
         language: {
             "sProcessing": "Procesando...",
@@ -74,26 +76,38 @@ function dataTable() {
     });
     $('select').formSelect();
      // Llamamos al metodo para obtener los datos, para actualizar
-     getDataToUpdate("#tableInve tbody", table);
-    
+    getDataToUpdate("#tableInve tbody", table);
+   // Llamamos al metodo para obtener el id del registro, para eliminar
+   getIdToDelete("#tableInve tbody", table);
 }
 function getDataToUpdate(tbody, table) {
     $('tbody').on("click", "a.update", function() {
         var data = table.row($(this).parents("tr")).data();
-        $("#cantiupd").next("label").addClass("active");
+        $("#matri1").next("label").addClass("active");
+        $("#circu1").next("label").addClass("active");
         $("#updaCodi").val(data.codiInve),
-        $("#cantiupd").val(data.cantVehi);
+        $("#circu1").val(data.circVehi);
+        $("#matri1").val(data.matrVehi);
         $("#vehiupd").val(data.vehiculo.codiVehi);
         console.log(data);
         
     });
 }
+
+function getIdToDelete(tbody, table) {
+    $('tbody').on("click", "a.delete", function() {
+        var data = table.row($(this).parents("tr")).data();
+        var codiTipoVehi = $("#deleCodi").val(data.codiInve);
+       
+    });
+}
 function add(){
     
-    var cant=$('#canti').val();
+    var matri=$('#matri').val();
     var marc=$('#vehi').val();
+    var circ=$('#circu').val();
     $.ajax({
-        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/create',
+        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -102,7 +116,9 @@ function add(){
         data : JSON.stringify({
             codiInve:null,
             vehiculo:{codiVehi:marc},
-            cantVehi:cant
+            matrVehi:matri,
+            circVehi:circ,
+            estaInve:1
             
         }),
         dataType:'JSON',
@@ -137,10 +153,11 @@ function add(){
 }
 function update(){
     var codi=$('#updaCodi').val();
-    var cant=$('#cantiupd').val();
-    var marc=$('#vehiupdupd').val();
+    var matri=$('#matri1').val();
+    var marc=$('#vehiupd').val();
+    var circ=$('#circu1').val();
     $.ajax({
-        url : 'http://ec2-52-14-245-189.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Inventario/update',
+        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -149,8 +166,9 @@ function update(){
         data : JSON.stringify({
             codiInve:codi,
             vehiculo:{codiVehi:marc},
-            cantVehi:cant
-            
+            matrVehi:matri,
+            circVehi:circ,
+            estaInve:1
         }),
         dataType:'JSON',
         success : function(resp) {
@@ -162,6 +180,55 @@ function update(){
                 position: 'top-end',
                 type: 'success',
                 title: 'Modelo modificado exitosamente',
+                showConfirmButton: false,
+                timer: 1300
+              })
+            $('.modal-footer').show();
+            $('#update').modal('close');
+            $('#frmUpdate')[0].reset();
+        },
+        error : function() {
+            console.log("No se pudo contactar con el servidor");
+            swal({
+                position: 'top-end',
+                type: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1300
+              })
+        }
+    });
+  
+}
+function remove(){
+    var codi=$('#deleCodi').val();
+    var matri=$('#matri1').val();
+    var marc=$('#vehiupd').val();
+    var circ=$('#circu1').val();
+    $.ajax({
+        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/delete',
+        headers: { 
+            
+            'Content-Type': 'application/json' 
+        },
+        type : 'PUT',
+        data : JSON.stringify({
+            codiInve:codi,
+            vehiculo:{codiVehi:marc},
+            matrVehi:matri,
+            circVehi:circ,
+            estaInve:0
+        }),
+        dataType:'JSON',
+        success : function(resp) {
+            console.log(resp);
+            // Recargando la tabla
+            table.ajax.reload();
+            // Reset
+            swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Vehiculo eliminado exitosamente',
                 showConfirmButton: false,
                 timer: 1300
               })

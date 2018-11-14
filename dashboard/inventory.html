@@ -18,8 +18,7 @@
                     <!-- <img src="images/office.jpg"> -->
                 </div>
                 <a href="#user"><img class="circle" src="../web/img/rent-a-car.svg"></a>
-                <a href="#name"><span class="white-text name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                <label class="white-text email" id="corri" name="corri"></label>
             </div>
         </li>
         <li><a class="subheader">Renta</a></li>
@@ -61,7 +60,8 @@
                 </li>
             </ul>
         </li>
-        <li><a href="logout.html"><i class="material-icons">power_settings_new</i>Cerrar Sesión</a></li>
+        <li><a href="profile.html" "><i class="material-icons" >supervisor_account</i>Mi perfil</a></li>
+        <li><a href="#" onclick="logout();"><i class="material-icons" >power_settings_new</i>Cerrar Sesión</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <main>
@@ -80,7 +80,8 @@
                                     <th>Modelo</th>
                                     <th>Marca</th>
                                     <th>Año</th>
-                                    <th>Cantidad</th>
+                                    <th>Matricula</th>
+                                    <th>Tarjeta de circulacion</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -115,9 +116,14 @@
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">list_alt</i>
-                                <input type="text" id="canti" name="canti">
-                                <label for="canti">Cantidad:</label>
+                                <input type="text" id="matri" name="matri">
+                                <label for="matri">Matricula/Placa del vehiculo:</label>
                             </div>
+                        </div>
+                        <div class="input-field col s12 m12">
+                            <i class="material-icons prefix">list_alt</i>
+                            <input type="text" id="circu" name="circu">
+                            <label for="circu">Tarjeta de circulacion:</label>
                         </div>
                     </div>
                 </div>
@@ -146,9 +152,14 @@
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <i class="material-icons prefix">list_alt</i>
-                                    <input type="text" id="cantiupd" name="cantiupd">
-                                    <label for="cantiupd">Cantidad:</label>
+                                    <input type="text" id="matri1" name="matri1">
+                                    <label for="matri">Matricula/Placa del vehiculo:</label>
                                 </div>
+                            </div>
+                            <div class="input-field col s12 m12">
+                                <i class="material-icons prefix">list_alt</i>
+                                <input type="text" id="circu1" name="circu1">
+                                <label for="circu1">Tarjeta de circulacion:</label>
                             </div>
                         </div>
                     </div>
@@ -159,11 +170,33 @@
                 </div>
             </form>
         </div>
+
+        <div id="remove" class="modal">
+            <form action="" id="frmDelete">
+                <div class="modal-header red darken-1 white-text">
+                    <h5 class="mt-none mb-none">Eliminar Vehiculo</h5>
+                    <i class="material-icons modal-close">close</i>
+                </div>
+                <div class="modal-content">
+                    <div class="row">
+                        <input type='hidden' id='deleCodi'>
+                        
+                        <p>¿Desea eliminar el siguiente registro?</p>
+                        <p><b>Nota: </b>Recordar una vez eliminado el registro y no se puede recuperar una vez realizada la operación</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect btn-flat">Cancelar</a>
+                    <button type="button" class="waves-effect waves-green btn red darken-1" onclick="remove();">Eliminar</button>
+                </div>
+            </form>
+        </div>
     <script src="../web/js/jquery.min.js"></script>
     <script src="../web/js/bin/materialize.min.js"></script>
     <script src="../web/js/datatables.js"></script>
     <script src="../web/js/initialize.js"></script>
     <script src="../web/js/sweetalert2.js"></script>
     <script src="../web/js/inventory.js"></script>
+    <script src="../web/js/logout.js"></script>
 </body>
 </html>

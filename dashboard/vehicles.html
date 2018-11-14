@@ -18,8 +18,7 @@
                     <!-- <img src="images/office.jpg"> -->
                 </div>
                 <a href="#user"><img class="circle" src="../web/img/rent-a-car.svg"></a>
-                <a href="#name"><span class="white-text name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                <label class="white-text email" id="corri" name="corri"></label>
             </div>
         </li>
         <li><a class="subheader">Renta</a></li>
@@ -61,7 +60,8 @@
                 </li>
             </ul>
         </li>
-        <li><a href="logout.html"><i class="material-icons">power_settings_new</i>Cerrar Sesión</a></li>
+        <li><a href="profile.html" "><i class="material-icons" >supervisor_account</i>Mi perfil</a></li>
+        <li><a href="#" onclick="logout();"><i class="material-icons" >power_settings_new</i>Cerrar Sesión</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <main>
@@ -195,12 +195,19 @@
                         <label for="depo">Cantidad de deposito:</label>
                     </div>         
                 </div>
-                <div class="center input-field col s12 m6">
-                    <select id="aire" name="aire">
-                        <option value="1">Si</option>
-                        <option value="0">No</option>
-                    </select>
-                    <label>Aire acondicionado:</label>
+                <div class="row mb-none">
+                    <div class="center input-field col s6 m6">
+                        <select id="aire" name="aire">
+                            <option value="1">Si</option>
+                            <option value="0">No</option>
+                        </select>
+                        <label>Aire acondicionado:</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">money_off</i>
+                        <input type="text" id="precd" name="precd">
+                        <label for="precd">Precio por dia:</label>
+                    </div> 
                 </div>
                 
             </div>
@@ -303,12 +310,19 @@
                             <label for="depo1">Cantidad de deposito:</label>
                         </div>         
                     </div>
-                    <div class="center input-field col s12 m6">
-                        <select id="aire1" name="aire1">
-                            <option value="1">Si</option>
-                            <option value="0">No</option>
-                        </select>
-                        <label>Aire acondicionado:</label>
+                    <div class="row mb-none">
+                        <div class="center input-field col s6 m6">
+                            <select id="aire1" name="aire1">
+                                <option value="1">Si</option>
+                                <option value="0">No</option>
+                            </select>
+                            <label>Aire acondicionado:</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">money_off</i>
+                            <input type="text" id="precd1" name="precd1">
+                            <label for="precd1">Precio por dia:</label>
+                        </div> 
                     </div>
                     
                 </div>
@@ -366,5 +380,6 @@
     <script src="../web/js/initialize.js"></script>
     <script src="../web/js/sweetalert2.js"></script>
     <script src="../web/js/vehicles.js"></script>
+    <script src="../web/js/logout.js"></script>
 </body>
 </html>

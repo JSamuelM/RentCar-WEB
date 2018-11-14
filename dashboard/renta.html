@@ -18,15 +18,50 @@
                     <!-- <img src="images/office.jpg"> -->
                 </div>
                 <a href="#user"><img class="circle" src="../web/img/rent-a-car.svg"></a>
-                <a href="#name"><span class="white-text name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                <label class="white-text email" id="corri" name="corri"></label>
             </div>
         </li>
-        <li><a href="index.html"><i class="material-icons">account_circle</i>Usuarios</a></li>
-        <li><a href="renta.html">Renta</a></li>
+        <li><a class="subheader">Renta</a></li>
+        <li><a href="renta.html"><i class="material-icons">assignment</i>Renta</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="subheader">Subheader</a></li>
-        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        <li><a class="subheader">Catálogos</a></li>
+        <li><a href="user.html"><i class="material-icons">account_circle</i>Usuarios</a></li>
+        <li><a href="type_users.html"><i class="material-icons">supervisor_account</i>Tipo de Usuarios</a></li>
+        <li><a href="vehicles.html"><i class="material-icons">directions_car</i>Vehículos</a></li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Datos de vehículos<i class="material-icons">arrow_drop_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="discount.html"><i class="material-icons">money_off</i>Descuentos</a></li>
+                            <li><a href="inventory.html"><i class="material-icons">list</i>Inventario</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+                <li>
+                    <a class="collapsible-header">Mantenimientos<i class="material-icons">arrow_drop_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="brand.html"><i class="material-icons">branding_watermark</i>Marca</a></li>
+                            <li><a href="model.html"><i class="material-icons">airport_shuttle</i>Modelo</a></li>
+                            <li><a href="transmission.html"><i class="material-icons">airline_seat_legroom_extra</i>Transmisión</a></li>
+                            <li><a href="gas.html"><i class="material-icons">local_gas_station</i>Combustible</a></li>
+                            <li><a href="license.html"><i class="material-icons">credit_card</i>Licencia</a></li>
+                            <li><a href="type_vehicle.html"><i class="material-icons">directions_car</i>Tipo de vehículo</a></li>
+                            <li><a href="type_payment.html"><i class="material-icons">payment</i>Tipo de pago</a></li>
+                            <li><a href="type_service.html"><i class="material-icons">room_service</i>Tipo de servicios</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><a href="profile.html" "><i class="material-icons" >supervisor_account</i>Mi perfil</a></li>
+        <li><a href="#" onclick="logout();"><i class="material-icons" >power_settings_new</i>Cerrar Sesión</a></li>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <main>
@@ -57,87 +92,14 @@
             </div>
         </div>
 
-        <!-- Agregar registro -->
-        <div class="fixed-action-btn">
-            <button class="btn modal-trigger waves-effect waves-circle waves-light btn-floating btn-large blue darken-1" data-target="addRent">
-                <i class="large material-icons">add</i>
-            </button>
-        </div>
     </main>
 
-    <div id="addRent" class="modal">
-        <form action="">
-            <div class="modal-content">
-                <h4>Registro de Renta</h4>
-                <div class="row mb-none">
-                    <div class="col s12">
-                        <div class="row mb-none">
-                            <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">account_circle</i>
-                                <select name="user" id="user"></select>
-                                <label for="user">Usuario:</label>
-                            </div>
-                            <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">directions_car</i>
-                                <input type="text" id="car" name="car">
-                                <label for="car">Código del Vehiculo:</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-none">
-                    <div class="col s12">
-                        <div class="row mb-none">
-                            <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input type="text" id="fechRent" name="fechRent" class="datepicker">
-                                <label for="fechRent">Fecha de renta:</label>
-                            </div>
-                            <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">phone</i>
-                                <input type="text" id="fechDevo" name="fechDevo" class="datepicker">
-                                <label for="fechDevo">Fecha de devolución:</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-none">
-                    <div class="col s12">
-                        <div class="row mb-none">
-                            <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">credit_card</i>
-                                <input type="text" id="dui" name="dui">
-                                <label for="dui">DUI de usuario:</label>
-                            </div>
-                            <div class="input-field col s12 m6">
-                                <i class="material-icons prefix">credit_card</i>
-                                <input type="text" id="pay" name="pay">
-                                <label for="pay">Tipo de pago:</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-none">
-                    <div class="col s12">
-                        <div class="row mb-none">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">account_box</i>
-                                <select id="state" name="state"></select>
-                                <label for="state">Estado de renta:</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-close waves-effect waves-green btn-flat">Agregar</button>
-            </div>
-        </form>
-    </div>
     <script src="../web/js/jquery.min.js"></script>
     <script src="../web/js/bin/materialize.min.js"></script>
     <script src="../web/js/datatables.js"></script>
     <script src="../web/js/initialize.js"></script>
+    <script src="../web/js/sweetalert2.js"></script>
     <script src="../web/js/rent.js"></script>
+    <script src="../web/js/logout.js"></script>
 </body>
 </html>

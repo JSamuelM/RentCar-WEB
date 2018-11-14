@@ -9,7 +9,7 @@ $(document).ready(function () {
     obteLice();
 });
 function obteMode() {
-    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Modelo', function(data) {
+    $.getJSON('http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Modelo', function(data) {
         var vehiculos = data.modelo;
         $('#mode li').remove();
         $('#mode1 li').remove();
@@ -22,7 +22,7 @@ function obteMode() {
     
 }
 function obteCombu() {
-    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Combustible', function(data) {
+    $.getJSON('http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Combustible', function(data) {
         var vehiculos = data.combustible;
         $('#combu li').remove();
         $('#combu1 li').remove();
@@ -35,7 +35,7 @@ function obteCombu() {
     
 }
 function obteTipoV() {
-    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoVehiculo', function(data) {
+    $.getJSON('http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoVehiculo', function(data) {
         var vehiculos = data.tipoVehiculo;
         $('#tipov li').remove();
         $('#tipov1 li').remove();
@@ -48,7 +48,7 @@ function obteTipoV() {
     
 }
 function obteTrans() {
-    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Transmision', function(data) {
+    $.getJSON('http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Transmision', function(data) {
         var vehiculos = data.transmision;
         $('#transm li').remove();
         $('#transm1 li').remove();
@@ -61,7 +61,7 @@ function obteTrans() {
     
 }
 function obteLice() {
-    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Licencia', function(data) {
+    $.getJSON('http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Licencia', function(data) {
         var vehiculos = data.licencia;
         $('#lice li').remove();
         $('#lice1 li').remove();
@@ -78,7 +78,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo',
+            url: 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo',
             data: {},
             dataSrc: 'vehiculo'
         },
@@ -206,7 +206,7 @@ function add(){
     var tipov=$('#tipov').val();
     var precd=$('#precd').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/create',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -289,7 +289,7 @@ function update(){
         estaVehi:1
     });
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/update',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -345,7 +345,7 @@ function remove(){
     var codi=$('#deleCodi').val();
     
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/delete',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo/delete',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -392,7 +392,7 @@ function imag(){
     var respuesta="";
     formData.append('file', file);
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/imagenes/upload',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/imagenes/upload',
         type : 'POST',
         data : formData,
         cache : false,
@@ -422,7 +422,7 @@ function imagebase(resp){
     var codi=$('#imageCodi').val();
 
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/imagenes/create',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/imagenes/create',
         headers: { 
             
             'Content-Type': 'application/json' 

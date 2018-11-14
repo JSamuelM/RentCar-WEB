@@ -7,7 +7,7 @@ function obteDatos() {
    
     console.log(localStorage.getItem('correo'));
     $.ajax({
-        url: 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/perfil',
+        url: 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/perfil',
         type: 'POST',
         data:{ corr: localStorage.getItem('correo') },
         success: function(data) {
@@ -49,7 +49,7 @@ function updatep(){
     var mail = $('#email1').val();
     
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/updatePersonalInformation',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/updatePersonalInformation',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -99,7 +99,7 @@ function updatepass(){
     var pass = $('#pass').val();
     
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/updatePasswordW',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/updatePasswordW',
         headers: { 
             
             'Content-Type': 'application/json' 

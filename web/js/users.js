@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 
 function obteTipo() {
-    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoUsuario', function(data) {
+    $.getJSON('http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/TipoUsuario', function(data) {
         var vehiculos = data.tipoUsuario;
         $('#tipoupd li').remove();
         $('#tipo li').remove();
@@ -23,7 +23,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario',
+            url: 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario',
             data: {},
             dataSrc: 'usuario'
         },
@@ -133,7 +133,7 @@ function add(){
     var pass = $('#pass').val();
     var tipo = $('#tipou').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/create',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -198,7 +198,7 @@ function update(){
     var mail = $('#email1').val();
     var tipo = $('#tipoupd1').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/update',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -262,7 +262,7 @@ function remove(){
     var pass = $('#contdel').val();
     var tipo = $('#tipoudel').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/delete',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/delete',
         headers: { 
             
             'Content-Type': 'application/json' 

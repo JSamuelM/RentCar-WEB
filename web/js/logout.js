@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    if(localStorage.getItem('correo')=== null){
+  /*  if(localStorage.getItem('correo')=== null){
         window.location.replace("index.html");
     }else{
         
-    }
+    }*/
 });
 function logout(){
     

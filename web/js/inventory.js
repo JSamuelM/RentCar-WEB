@@ -5,7 +5,7 @@ $(document).ready(function () {
     obteVehi();
 });
 function obteVehi() {
-    $.getJSON('http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo', function(data) {
+    $.getJSON('http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Vehiculo', function(data) {
         var vehiculos = data.vehiculo;
         $('#vehiupd li').remove();
         $('#vehi li').remove();
@@ -22,7 +22,7 @@ function dataTable() {
         destroy: true,
         ajax: {
             method: 'GET',
-            url: 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo',
+            url: 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo',
             data: {},
             dataSrc: 'inventarioVehiculo'
         },
@@ -107,7 +107,7 @@ function add(){
     var marc=$('#vehi').val();
     var circ=$('#circu').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/create',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/create',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -157,7 +157,7 @@ function update(){
     var marc=$('#vehiupd').val();
     var circ=$('#circu1').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/update',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/update',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -206,7 +206,7 @@ function remove(){
     var marc=$('#vehiupd').val();
     var circ=$('#circu1').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/delete',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/InventarioVehiculo/delete',
         headers: { 
             
             'Content-Type': 'application/json' 

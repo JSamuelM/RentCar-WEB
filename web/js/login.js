@@ -1,16 +1,16 @@
 $(document).ready(function () {
-    if(localStorage.getItem('correo')=== null){
+   /* if(localStorage.getItem('correo')=== null){
         
     }else{
         window.location.replace("vehicles.html");
-    }
+    }*/
 });
 function login(){
     
     var correo=$('#user').val();
     var contra=$('#pass').val();
     $.ajax({
-        url : 'http://ec2-18-223-134-87.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/loginw',
+        url : 'http://ec2-18-216-104-139.us-east-2.compute.amazonaws.com:8080/JerseyHibernateRent/webapi/Usuario/loginw',
         headers: { 
             
             'Content-Type': 'application/json' 
@@ -50,5 +50,6 @@ function login(){
     });
     $('#user').val('');
     $('#pass').val('');
+
   
 }
